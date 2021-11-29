@@ -21,8 +21,6 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 Mock-Up
 
-
-
 ## Input
 - Character Types to include
     -Lowercase 
@@ -38,11 +36,13 @@ Mock-Up
 - Password must be randomized
 - My input should be validated and at least one character type should be selected
 
-
-
 ## Output
 - Generated Password
 
+## Challenges
+- setting the conditions
+- setting up the for loop
+- combining the array to set the password
 
 ## Password options T = TRUE, F = FALSE
 3 options
@@ -64,11 +64,6 @@ Mock-Up
 - FTFF
 - FFTF
 - FFFT
-
-
-
-
-
 
 ## Contributors
 Miguel Osorio
