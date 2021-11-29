@@ -15,37 +15,124 @@ var number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
+
 // Prompts
-var confirmNumber = confirm("Do you want to include numbers?");
-var confirmCharacter = confirm("Do you want to include special characters?");
-var confirmUppercase = confirm("Do you want to include Uppercase Letters?");
-var confirmLowercase = confirm("Do you want to include Lowercase letters?");
+var askLength;
+var confirmNumber;
+var confirmCharacter;
+var confirmUppercase;
+var confirmLowercase;
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   var randomPassword = "";
+  askLength = parseInt(prompt("How many characters would you like your password to have? Choose between 8 and 128"));
+ 
   
-  if (confirmNumber) {
-    randomPassword = randomPassword + number + character + lowerCase + upperCase;
+  
+  if (!askLength) {
+    alert("Your input needs to be a number between 8 to 128!");
   } 
+  
+  else if (askLength < 8 || askLength > 128) {
+    askLength = parseInt(prompt("POOT A NUMBA BETWEEEN 8 - 128 PLEASE!!!"));
+  } 
+  
+  else {
+    confirmNumber = confirm("Do you want to include numbers?");
+    confirmCharacter = confirm("Do you want to include special characters?");
+    confirmUppercase = confirm("Do you want to include Uppercase Letters?");
+    confirmLowercase = confirm("Do you want to include Lowercase letters?");
+    console.log(askLength);
+  }
+  
+  if (!confirmNumber && !confirmCharacter && !confirmUppercase && !confirmLowercase) {
+    alert("You need to select atleast 1 character type!");
+  } 
+  
+  // Selected true for all character types
+  else if (confirmNumber && confirmCharacter && confirmUppercase && confirmLowercase) {
+    randomPassword = number.concat(character, lowerCase, upperCase);
+  }
 
   
-  if (confirmCharacter) {
-    randomPassword = randomPassword + character + number + lowerCase + upperCase;
-  } 
-
-
-  if (confirmUppercase) {
-    randomPassword = randomPassword + upperCase + number + character + lowerCase;
-  } 
-
-
-  if (confirmLowercase) {
-    randomPassword = randomPassword + lowerCase + upperCase + character + number;
-  } 
-
   
+  
+  // Selected true for 3 options
+  else if (confirmNumber && confirmCharacter && confirmUppercase && !confirmLowercase) {
+    randomPassword = number.concat(character, upperCase);
+  }
+
+  else if (confirmNumber && confirmCharacter && !confirmUppercase && confirmLowercase) {
+    randomPassword = number.concat(character, lowerCase);
+  }
+
+  else if (confirmNumber && !confirmCharacter && confirmUppercase && confirmLowercase) {
+    randomPassword = number.concat(lowerCase, upperCase);
+  }
+
+  else if (!confirmNumber && confirmCharacter && confirmUppercase && confirmLowercase) {
+    randomPassword = character.concat(lowerCase, upperCase);
+  }
+
+
+
+
+
+  // Selected true for 2 options
+  else if (confirmNumber && confirmCharacter && !confirmUppercase && !confirmLowercase) {
+    randomPassword = number.concat(character);
+  }
+
+  else if (confirmNumber && !confirmCharacter && !confirmUppercase && confirmLowercase) {
+    randomPassword = number.concat(lowerCase);
+  }
+
+  else if (confirmNumber && !confirmCharacter && confirmUppercase && !confirmLowercase) {
+    randomPassword = number.concat(upperCase);
+  }
+
+  else if (!confirmNumber && confirmCharacter && confirmUppercase && !confirmLowercase) {
+    randomPassword = character.concat(upperCase);
+  }
+  
+  else if (!confirmNumber && !confirmCharacter && confirmUppercase && confirmLowercase) {
+    randomPassword = lowerCase.concat(upperCase);
+  }
+
+  else if (!confirmNumber && confirmCharacter && !confirmUppercase && confirmLowercase) {
+    randomPassword = character.concat(lowerCase);
+  }
+
+
+
+
+
+  // Selected true for 1 option
+  else if (confirmNumber && !confirmCharacter && !confirmLowercase && !confirmUppercase) {
+    randomPassword = number;
+  }
+  
+  else if (!confirmNumber && confirmCharacter && !confirmLowercase && !confirmUppercase) {
+    randomPassword = character;
+  }
+
+  else if (!confirmNumber && !confirmCharacter && confirmLowercase && !confirmUppercase) {
+    randomPassword = lowerCase;
+  }
+
+  else if (!confirmNumber && !confirmCharacter && !confirmLowercase && confirmUppercase) {
+    randomPassword = upperCase;
+  }
+
+
+
+
+
+
 
   return randomPassword;
 }

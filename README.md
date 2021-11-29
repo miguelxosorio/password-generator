@@ -1,5 +1,7 @@
 # password-generator
 
+
+## Criteria
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria
@@ -21,7 +23,7 @@ Mock-Up
 
 
 
-Input
+## Input
 - Character Types to include
     -Lowercase 
     -Uppercase 
@@ -38,5 +40,35 @@ Input
 
 
 
-Output
+## Output
 - Generated Password
+
+
+## Password options T = TRUE, F = FALSE
+3 options
+- TTTF
+- TTFT
+- TFTT
+- FTTT
+
+2 options
+- TTFF
+- TFFT
+- TFTF
+- FTTF
+- FFTT
+- FTFT
+
+1 option
+- TFFF
+- FTFF
+- FFTF
+- FFFT
+
+
+
+
+
+
+## Contributors
+Miguel Osorio
