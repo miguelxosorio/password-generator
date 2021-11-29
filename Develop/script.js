@@ -16,18 +16,39 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 // Prompts
-confirmNumber = confirm("Do you want to include numbers?");
-confirmCharacter = confirm("Do you want to include special characters?");
-confirmUppercase = confirm("Do you want to include Uppercase Letters?");
-confirmLowercase = confirm("Do you want to include Lowercase letters?");
+var confirmNumber = confirm("Do you want to include numbers?");
+var confirmCharacter = confirm("Do you want to include special characters?");
+var confirmUppercase = confirm("Do you want to include Uppercase Letters?");
+var confirmLowercase = confirm("Do you want to include Lowercase letters?");
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-  function generatePassword() {
-    
+function generatePassword() {
+  var randomPassword = "";
+  
+  if (confirmNumber) {
+    randomPassword = randomPassword + number + character + lowerCase + upperCase;
+  } 
 
-    return "password here!";
-  }
+  
+  if (confirmCharacter) {
+    randomPassword = randomPassword + character + number + lowerCase + upperCase;
+  } 
+
+
+  if (confirmUppercase) {
+    randomPassword = randomPassword + upperCase + number + character + lowerCase;
+  } 
+
+
+  if (confirmLowercase) {
+    randomPassword = randomPassword + lowerCase + upperCase + character + number;
+  } 
+
+  
+
+  return randomPassword;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -44,7 +65,8 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // // Loop 
-// for (let i = 0; i < array.length; i++) {
-//   const element = array[i];
+//  for (var i = 0; i < array.length; i++) {
+//  
+//  const element = array[i];
   
 // }
