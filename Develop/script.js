@@ -38,7 +38,7 @@ function generatePassword() {
   } 
   
   else if (askLength < 8 || askLength > 128) {
-    askLength = parseInt(prompt("POOT A NUMBA BETWEEEN 8 - 128 PLEASE!!!"));
+    askLength = parseInt(prompt("Put a number between 8 to 128"));
   } 
   
   else {
@@ -46,7 +46,6 @@ function generatePassword() {
     confirmCharacter = confirm("Do you want to include special characters?");
     confirmUppercase = confirm("Do you want to include Uppercase Letters?");
     confirmLowercase = confirm("Do you want to include Lowercase letters?");
-    console.log(askLength);
   }
   
   if (!confirmNumber && !confirmCharacter && !confirmUppercase && !confirmLowercase) {
@@ -128,13 +127,20 @@ function generatePassword() {
     randomPassword = upperCase;
   }
 
+  var finalPassword = []
+
+
+  for (let index = 0; index < askLength; index++) {
+    finalPassword.push(randomPassword[(Math.floor(Math.random() * randomPassword.length))]);
+    console.log(finalPassword);
+  }
+  
+  finalPassword = finalPassword.join('');
+  
 
 
 
-
-
-
-  return randomPassword;
+  return finalPassword;
 }
 
 // Write password to the #password input
